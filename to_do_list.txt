@@ -1,13 +1,13 @@
 TO DO:
-[] ekran g³ówny aplikacji 
-	[] wyœwietlanie szablonu okna
+[] ekran glowny aplikacji 
+	[] wyswietlanie szablonu okna
 		[] statyczne okna
 		[] paski potrzeb
-		[] okno eventów
+		[] okno eventow
 		[] okno pisemnych eventow
 		[] otoczenie postaci
-			[] t³o 
-				[] t³o zale¿ne od rzeczywistego czasu (opcjonalnie)
+			[] tlo 
+				[] tlo zalezne od rzeczywistego czasu (opcjonalnie)
 			[] wyposazenie pokoju 
 				[] miski 
 				[] miejsce do spania
@@ -19,22 +19,22 @@ TO DO:
 				[] buty
 				[] ozdoba
 			[] zabawka
-	[] obs³uga klikalnych elementow
+	[] obsluga klikalnych elementow
 		[] wychodzenie/zapisywanie
 		[] otwieranie i zamykanie okna sklepu/gier/jedzenia/picia
 		[] wyswietlanie i wybieranie elementow w oknach sklepu/gier/jedzenia/picia
-		[] u¿ywanie zabawki/ ³ó¿ka
-		[] usuwanie odchodów (opcjonalne)
+		[] uzywanie zabawki/ lozka
+		[] usuwanie odchodow (opcjonalne)
 [] mechanika gry
 	[] zapisywanie stanu gry
 	[] potrzeby postaci i ich zaspokajanie
-		[] g³ód
+		[] glod
 		[] pragnienie
 		[] energia
 		[] zabawa
 		[] higiena (opcjonalnie)
 		[] zdrowie (opcjonalnie)
-	[] kupowanie przedmiotów w sklepie/ oknie jedzenia/ picia i wybór posiadanych
+	[] kupowanie przedmiotow w sklepie/ oknie jedzenia/ picia i wybor posiadanych
 		[] bonusy do potrzeb lub ich zaspokajanie
 		[] listowanie przedmiotow po ID wedlug typu przedmiotu i jego statystyk
 		[] wydawanie $$$
@@ -52,9 +52,9 @@ TO DO:
 			[] chomik
 			[] zó³w
 	[] eventy
-		[] pisemne opisy eventówf
+		[] pisemne opisy eventow
 		[] eventy aktywne okreslony czas
-		[] bonusy z eventów
+		[] bonusy z eventow
 	[] bonusy do potrzeb i eventy zalezne od rzeczywistego czasu (opcjonalnie) 
 [] uruchamianie gry
 	[] uruchamianie przez ikone/konsole bez atrybutow
@@ -65,9 +65,9 @@ TO DO:
 		[] wczytywanie ustawien z istniejacego zapisu
 		[] tworzenie nowej postaci z podanych argumentow
 [] zasoby
-	[] t³a
+	[] tla
 	[] postaci
-	[] przedmioty (lista z id_kategorii, id_przedmiotu + wygl¹d)
+	[] przedmioty (lista z id_kategorii, id_przedmiotu + wyglad)
 		[] czapki
 		[] ozdoby
 		[] buty
@@ -79,6 +79,6 @@ TO DO:
 		[] miska picia (opcjonalnie)
 		[] inne wyposazenie domu (opcjonalne)
 	[] eventy
-		[] opisy eventów pisemnych
-		[] miniatury eventów aktywnych
+		[] opisy eventow pisemnych
+		[] miniatury eventow aktywnych
 	[] odchody (opcjonalne)
