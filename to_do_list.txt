@@ -1,0 +1,84 @@
+TO DO:
+[] ekran g³ówny aplikacji 
+	[] wyœwietlanie szablonu okna
+		[] statyczne okna
+		[] paski potrzeb
+		[] okno eventów
+		[] okno pisemnych eventow
+		[] otoczenie postaci
+			[] t³o 
+				[] t³o zale¿ne od rzeczywistego czasu (opcjonalnie)
+			[] wyposazenie pokoju 
+				[] miski 
+				[] miejsce do spania
+			[] odchody (opcjonalne)
+		[] postac
+			[] szablon postaci
+			[] elementy ubioru
+				[] czapka
+				[] buty
+				[] ozdoba
+			[] zabawka
+	[] obs³uga klikalnych elementow
+		[] wychodzenie/zapisywanie
+		[] otwieranie i zamykanie okna sklepu/gier/jedzenia/picia
+		[] wyswietlanie i wybieranie elementow w oknach sklepu/gier/jedzenia/picia
+		[] u¿ywanie zabawki/ ³ó¿ka
+		[] usuwanie odchodów (opcjonalne)
+[] mechanika gry
+	[] zapisywanie stanu gry
+	[] potrzeby postaci i ich zaspokajanie
+		[] g³ód
+		[] pragnienie
+		[] energia
+		[] zabawa
+		[] higiena (opcjonalnie)
+		[] zdrowie (opcjonalnie)
+	[] kupowanie przedmiotów w sklepie/ oknie jedzenia/ picia i wybór posiadanych
+		[] bonusy do potrzeb lub ich zaspokajanie
+		[] listowanie przedmiotow po ID wedlug typu przedmiotu i jego statystyk
+		[] wydawanie $$$
+	[] minigry
+		[] snake
+		[] spadanie
+		[] zdobywanie $$$ w minigrach
+	[] rodzaje postaci
+		[] bonusy do potrzeb zalezne od rodzaju postaci
+		[] zabawki zalezne od postaci
+		[] postaci do wyboru:
+			[] pies
+			[] kot
+			[] aligator
+			[] chomik
+			[] zó³w
+	[] eventy
+		[] pisemne opisy eventówf
+		[] eventy aktywne okreslony czas
+		[] bonusy z eventów
+	[] bonusy do potrzeb i eventy zalezne od rzeczywistego czasu (opcjonalnie) 
+[] uruchamianie gry
+	[] uruchamianie przez ikone/konsole bez atrybutow
+		[] wypisywanie istniejacych zapisow
+		[] wczytywanie ustawien z istniejacego zapisu
+		[] tworzenie nowej postaci
+	[] uruchamianie przez konsole z argumentami
+		[] wczytywanie ustawien z istniejacego zapisu
+		[] tworzenie nowej postaci z podanych argumentow
+[] zasoby
+	[] t³a
+	[] postaci
+	[] przedmioty (lista z id_kategorii, id_przedmiotu + wygl¹d)
+		[] czapki
+		[] ozdoby
+		[] buty
+	[] jedzenie
+	[] picie
+	[] wyposazenie
+		[] zabawka
+		[] miska jedzenia (opcjonalnie)
+		[] miska picia (opcjonalnie)
+		[] inne wyposazenie domu (opcjonalne)
+	[] eventy
+		[] opisy eventów pisemnych
+		[] miniatury eventów aktywnych
+	[] odchody (opcjonalne)
