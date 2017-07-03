@@ -3,6 +3,7 @@ TO DO:
 	[] wyswietlanie szablonu okna
 		[] statyczne okna
 		[] paski potrzeb
+		[] okno sklepu
 		[] okno eventow
 		[] okno pisemnych eventow
 		[] otoczenie postaci
