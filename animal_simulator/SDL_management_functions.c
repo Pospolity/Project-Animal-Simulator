@@ -7,7 +7,7 @@ int SDL_initialize()
 		success = FALSE;
 	else
 	{
-		gameWindow = SDL_CreateWindow("Animal Simulator", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		gameWindow = SDL_CreateWindow("Animal Simulator", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 		if (gameWindow == NULL)
 			success = FALSE;
 		else
