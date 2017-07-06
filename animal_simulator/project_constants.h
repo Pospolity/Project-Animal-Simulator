@@ -8,7 +8,7 @@
 /*MAIN WINDOW*/
 /*M*/#define MAIN_WINDOW_WIDTH 960
 /*M*/#define MAIN_WINDOW_HEIGHT 540
-/*STATIC WINDOWS*/
+/*STATIC WINDOWS*/ // static means here that type of content in the window doesn't change, however the items in this content can change (e.g. active events window is always in the right top corner, but single events in this window can change)
 /*M*/#define ACTIVE_EVENTS_WINDOW_WIDTH 400
 /*M*/#define ACTIVE_EVENTS_WINDOW_HEIGHT 140
 #define ACTIVE_EVENTS_WINDOW_TLCX 0
@@ -22,7 +22,7 @@
 /*M*/#define ACTIVE_WINDOW_HEIGHT 280
 #define ACTIVE_WINDOW_TLCX (MAIN_WINDOW_WIDTH - ACTIVE_WINDOW_WIDTH)
 #define ACTIVE_WINDOW_TLCY ACTIVE_EVENTS_WINDOW_HEIGHT
-/*BUTTONS*/
+/*STATIC BUTTONS*/
 #define SHOP_B_WIDTH (MAIN_WINDOW_WIDTH - ACTIVE_WINDOW_WIDTH)
 #define SHOP_B_HEIGHT (ACTIVE_WINDOW_HEIGHT/2)
 #define SHOP_B_TLCX 0

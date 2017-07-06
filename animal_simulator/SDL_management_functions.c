@@ -21,6 +21,8 @@ int SDL_initialize()
 				int imgFlags = IMG_INIT_PNG;
 				if (!(IMG_Init(imgFlags) & imgFlags))
 					success = FALSE;
+				if (TTF_Init() == -1)
+					success = FALSE;
 			}
 		}
 	}

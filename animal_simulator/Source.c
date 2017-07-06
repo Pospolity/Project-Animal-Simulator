@@ -4,7 +4,8 @@
 
 #include "SDL_management_functions.h"
 
-struct texture {
+struct texture 
+{
 	SDL_Texture* texture;
 	int tWidth;
 	int tHeight;
@@ -12,6 +13,8 @@ struct texture {
 
 int load_textures(void);
 void free_textures(void);
+void load_static_windows(void);
+void load_static_buttons(void);
 
 int load_textures()
 {
@@ -25,6 +28,19 @@ int load_textures()
 void free_textures()
 {
 	;//---here we will need to free loaded textures when we will have any---
+}
+
+void load_static_windows(void) 
+{
+	;// load active events window
+
+	//
+}
+
+void load_static_buttons(void)
+{
+	;//
+	//
 }
 
 int main(int argc, char* args[])
@@ -45,10 +61,8 @@ int main(int argc, char* args[])
 	if (success) {
 		int quit = FALSE;
 		SDL_Event e; //Event handler
-		while (!quit)
-		{
-			while (SDL_PollEvent(&e) != 0) //Handling events on queue
-			{
+		while (!quit) {
+			while (SDL_PollEvent(&e) != 0) { //Handling events on queue
 				if (e.type == SDL_QUIT) //User requests quit by clicking the standard windows' close button
 					quit = TRUE;
 			}
@@ -56,6 +70,9 @@ int main(int argc, char* args[])
 			//Clearing the screen
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(renderer);
+
+			load_static_windows();
+			load_static_buttons();
 
 			//Updating the screen
 			SDL_RenderPresent(renderer);
