@@ -3,22 +3,12 @@
 #include "project_global_variables.h"
 
 #include "SDL_management_functions.h"
-
-struct texture // data fields: { SDL_Texture* texture; int width; int height; }
-{
-	SDL_Texture* texture;
-	int width;
-	int height;
-};
+#include "buttons.h"
+#include "static_windows.h"
+#include "textures.h"
 
 int load_textures(void);
 void free_textures(void);
-void render_static_windows(struct texture windowText);
-void render_static_buttons(void);
-void load_static_windows(struct texture * windowText);
-void load_static_buttons(void);
-void texture_Free(struct texture * textureToFree);
-void texture_LoadFromRenderedText(struct texture * textTexture, char * textString, SDL_Color textColor);
 void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h);
 
 int load_textures()
@@ -35,61 +25,8 @@ void free_textures()
 	;//---here we will need to free loaded textures when we will have any---
 }
 
-void render_static_windows(struct texture windowText)
+void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h) 
 {
-	// render active events window
-	SDL_Rect renderQuad = { ACTIVE_EVENTS_WINDOW_TLCX, ACTIVE_EVENTS_WINDOW_TLCY, ACTIVE_EVENTS_WINDOW_WIDTH, ACTIVE_EVENTS_WINDOW_HEIGHT };
-	SDL_SetRenderDrawColor(renderer, ACTIVE_EVENTS_WINDOW_RGBA_COLOR);
-	SDL_RenderFillRect(renderer, &renderQuad);
-	SDL_Rect_Set(&renderQuad, 135, 10, windowText.width, windowText.height);
-	SDL_RenderCopy(renderer, windowText.texture, NULL, &renderQuad);
-	// render next static windows...
-}
-
-void load_static_windows(struct texture * windowText) 
-{
-	SDL_Color textColor = { 0, 0, 0 };
-	texture_LoadFromRenderedText(windowText, "Active Events", textColor);
-
-}
-
-void render_static_buttons(void)
-{
-	;//
-	//
-}
-
-void load_static_buttons(void) 
-{
-	;//
-}
-
-void texture_Free(struct texture * textureToFree)
-{
-	if (textureToFree->texture != NULL) { //at first check if the texture exists
-		SDL_DestroyTexture(textureToFree->texture);
-		textureToFree->texture = NULL;
-		textureToFree->height = 0;
-		textureToFree->width = 0;
-	}
-}
-
-void texture_LoadFromRenderedText(struct texture * textTexture, char * textString, SDL_Color textColor)
-{
-	texture_Free(textTexture);
-
-	SDL_Surface* textSurface = TTF_RenderText_Solid(font, textString, textColor);
-	if (textSurface != NULL) {
-		textTexture->texture = SDL_CreateTextureFromSurface(renderer, textSurface);
-		if (textTexture->texture != NULL) {
-			textTexture->width = textSurface->w;
-			textTexture->height = textSurface->h;
-		}
-		SDL_FreeSurface(textSurface);
-	}
-}
-
-void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h) {
 	sdl_rect->x = x;
 	sdl_rect->y = y;
 	sdl_rect->w = w;
@@ -113,21 +50,34 @@ int main(int argc, char* args[])
 	if (success) {
 		int quit = FALSE;
 		SDL_Event e; //Event handler
+		struct texture activeEventsWindowTextTexture = { NULL, 0, 0 };
+		struct texture needsBarsWindowTextTexture = { NULL, 0, 0 };
+		struct texture textEventsWindowTextTexture = { NULL, 0, 0 };
 		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
-		struct texture windowText = { NULL, 0, 0 };
-		load_static_windows(&windowText);
+		load_static_windows_text_textures(&activeEventsWindowTextTexture, &needsBarsWindowTextTexture, &textEventsWindowTextTexture);
+		struct button shopButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
+		struct button gamesButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
+		struct button saveButton = { .buttonTextTexture = { NULL, 0, 0 },.buttonState = B_INACTIVE };
+		struct button exitButton = { .buttonTextTexture = { NULL, 0, 0 },.buttonState = B_INACTIVE };
+		TTF_CloseFont(font);
+		font = TTF_OpenFont("funnypages.ttf", 24); //setting the font
+		load_static_buttons_text_textures(&shopButton, &gamesButton, &saveButton, &exitButton);
 		while (!quit) {
 			while (SDL_PollEvent(&e) != 0) { //Handling events on queue
 				if (e.type == SDL_QUIT) //User requests quit by clicking the standard windows' close button
 					quit = TRUE;
+				button_HandleMouseEvents(&shopButton, &e, SHOP_B_TLCX, SHOP_B_TLCY, SHOP_B_WIDTH, SHOP_B_HEIGHT);
+				button_HandleMouseEvents(&gamesButton, &e, GAMES_B_TLCX, GAMES_B_TLCY, GAMES_B_WIDTH, GAMES_B_HEIGHT);
+				button_HandleMouseEvents(&saveButton, &e, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT);
+				button_HandleMouseEvents(&exitButton, &e, EXIT_B_TLCX, EXIT_B_TLCY, EXIT_B_WIDTH, EXIT_B_HEIGHT);
 			}
 
 			//Clearing the screen
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(renderer);
 
-			render_static_windows(windowText);
-			render_static_buttons();
+			render_static_windows(activeEventsWindowTextTexture, needsBarsWindowTextTexture, textEventsWindowTextTexture);
+			render_static_buttons(shopButton, gamesButton, saveButton, exitButton);
 
 			//Updating the screen
 			SDL_RenderPresent(renderer);

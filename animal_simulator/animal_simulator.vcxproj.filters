@@ -21,6 +21,15 @@
     <ClCompile Include="SDL_management_functions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="textures.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="buttons.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="static_windows.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_management_functions.h">
@@ -33,6 +42,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="project_global_variables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buttons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="static_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
