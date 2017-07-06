@@ -5,3 +5,4 @@
 
 SDL_Window* gameWindow;
 SDL_Renderer* renderer;
+TTF_Font *font;

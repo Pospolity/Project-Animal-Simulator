@@ -36,7 +36,11 @@ void SDL_close()
 	renderer = NULL;
 	SDL_DestroyWindow(gameWindow);
 	gameWindow = NULL;
+	TTF_CloseFont(font);
+	font = NULL;
 
+
+	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
 }
