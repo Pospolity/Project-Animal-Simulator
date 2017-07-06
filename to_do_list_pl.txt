@@ -1,7 +1,7 @@
 TO DO:
 [] ekran glowny aplikacji 
 	[] wyswietlanie szablonu okna
-		[] statyczne okna i przyciski
+		[x] statyczne okna i przyciski
 		[] paski potrzeb
 		[] okno sklepu
 		[] okno eventow
