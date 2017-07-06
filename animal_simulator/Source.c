@@ -114,10 +114,6 @@ int main(int argc, char* args[])
 		int quit = FALSE;
 		SDL_Event e; //Event handler
 		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
-		if (font == NULL) {
-			printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
-		}
-		// MAKE A STATIC WINDOW TEXT
 		struct texture windowText = { NULL, 0, 0 };
 		load_static_windows(&windowText);
 		while (!quit) {
