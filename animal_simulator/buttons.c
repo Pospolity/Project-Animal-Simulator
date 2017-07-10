@@ -54,11 +54,11 @@ void render_static_buttons(struct button shopButton, struct button gamesButton, 
 	}
 	switch (saveButton.buttonState) {
 	case B_INACTIVE:
-		render_static_button(shopButton.buttonTextTexture, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT, SAVE_B_LEFT_TEXT_PADDING, SAVE_B_TOP_TEXT_PADDING, SAVE_B_RGBA_COLOR_INACTIVE); break;
+		render_static_button(saveButton.buttonTextTexture, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT, SAVE_B_LEFT_TEXT_PADDING, SAVE_B_TOP_TEXT_PADDING, SAVE_B_RGBA_COLOR_INACTIVE); break;
 	case B_HIGHLIGHTED:
-		render_static_button(shopButton.buttonTextTexture, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT, SAVE_B_LEFT_TEXT_PADDING, SAVE_B_TOP_TEXT_PADDING, SAVE_B_RGBA_COLOR_HIGHLIGHTED); break;
+		render_static_button(saveButton.buttonTextTexture, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT, SAVE_B_LEFT_TEXT_PADDING, SAVE_B_TOP_TEXT_PADDING, SAVE_B_RGBA_COLOR_HIGHLIGHTED); break;
 	case B_ACTIVE:
-		render_static_button(shopButton.buttonTextTexture, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT, SAVE_B_LEFT_TEXT_PADDING, SAVE_B_TOP_TEXT_PADDING, SAVE_B_RGBA_COLOR_ACTIVE); break;
+		render_static_button(saveButton.buttonTextTexture, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT, SAVE_B_LEFT_TEXT_PADDING, SAVE_B_TOP_TEXT_PADDING, SAVE_B_RGBA_COLOR_ACTIVE); break;
 	}
 	switch (exitButton.buttonState) {
 	case B_INACTIVE:
@@ -72,7 +72,7 @@ void render_static_buttons(struct button shopButton, struct button gamesButton, 
 
 void render_static_button(struct texture staticButtonTextTexture, int x, int y, int w, int h, int leftTextPadding, int topTextPadding, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
-	SDL_Rect renderQuad = { x, y, w, h };
+	SDL_Rect renderQuad = { x, y, w, h }; 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	SDL_RenderFillRect(renderer, &renderQuad);
 	SDL_Rect_Set(&renderQuad, x + leftTextPadding, y + topTextPadding, staticButtonTextTexture.width, staticButtonTextTexture.height);
