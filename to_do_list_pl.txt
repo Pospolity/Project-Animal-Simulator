@@ -2,7 +2,7 @@ TO DO:
 [] ekran glowny aplikacji 
 	[] wyswietlanie szablonu okna
 		[x] statyczne okna i przyciski
-		[] paski potrzeb
+		[x] paski potrzeb
 		[] okno sklepu
 		[] okno eventow
 		[] okno pisemnych eventow
@@ -20,7 +20,6 @@ TO DO:
 				[] buty
 				[] ozdoba
 			[] zabawka
-		[] sklep
 		[] okno wyboru jedzenia
 		[] okno wyboru picia
 		[] okno wyboru gier

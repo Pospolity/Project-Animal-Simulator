@@ -30,6 +30,9 @@
     <ClCompile Include="static_windows.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="need_bars.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_management_functions.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="need_bars.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

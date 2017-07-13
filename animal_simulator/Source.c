@@ -6,21 +6,11 @@
 #include "buttons.h"
 #include "static_windows.h"
 #include "textures.h"
-
-struct needBar 
-{
-	struct texture needBarTitleTextTexture;
-	struct texture needBarStateTextTexture;
-	int needBarMaxValue;
-	int needBarCurrentValue;
-};
+#include "need_bars.h"
 
 int load_textures(void);
 void free_textures(void);
 void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h);
-void render_need_bar(struct needBar needBar, int x, int y);
-void render_need_bars(struct needBar hungerBar);
-void load_need_bars_static_text_textures(struct needBar * hungerBar);
 
 int load_textures()
 {
@@ -42,34 +32,6 @@ void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h)
 	sdl_rect->y = y;
 	sdl_rect->w = w;
 	sdl_rect->h = h;
-}
-
-void load_need_bars_static_text_textures(struct needBar * hungerBar) 
-{
-	SDL_Color textColor = { 0, 0, 0 };
-	texture_LoadFromRenderedText(&(hungerBar->needBarTitleTextTexture), "Hunger", textColor);
-}
-
-void render_need_bars(struct needBar hungerBar)
-{
-	render_need_bar(hungerBar, HUNGER_BAR_TEXT_TLCX, HUNGER_BAR_TEXT_TLCY);
-}
-
-void render_need_bar(struct needBar needBar, int x, int y)
-{
-	// RENDERING NEED BAR TITLE
-	// to do
-	// RENDERING NEED BAR BORDER
-	SDL_Rect renderQuad = { x, y + NEED_BARS_PADDING_FROM_TOP, NEED_BAR_WIDTH, NEED_BAR_HEIGHT };
-	SDL_SetRenderDrawColor(renderer, NEED_BAR_BORDER_RGBA_COLOR);
-	SDL_RenderDrawRect(renderer, &renderQuad);
-	// RENDERING NEED BAR FILLING
-	double percentFilled = (double) needBar.needBarCurrentValue / needBar.needBarMaxValue;
-	SDL_Rect_Set(&renderQuad, x, y + NEED_BARS_PADDING_FROM_TOP, (int)(percentFilled * NEED_BAR_WIDTH), NEED_BAR_HEIGHT);
-	SDL_SetRenderDrawColor(renderer, NEED_BAR_RGBA_COLOR_FILLING);
-	SDL_RenderFillRect(renderer, &renderQuad);
-	// RENDERING TEXT INSIDE NEED BAR
-	// to do 
 }
 
 int main(int argc, char* args[])
@@ -101,11 +63,13 @@ int main(int argc, char* args[])
 		TTF_CloseFont(font);
 		font = TTF_OpenFont("funnypages.ttf", 24); //setting the font
 		load_static_buttons_text_textures(&shopButton, &gamesButton, &saveButton, &exitButton);
-		struct needBar hungerBar = { .needBarTitleTextTexture = { NULL, 0, 0 },.needBarStateTextTexture = { NULL, 0, 0 },.needBarMaxValue = 200,.needBarCurrentValue = 50 };
-		struct needBar thirstBar = { .needBarTitleTextTexture = { NULL, 0, 0 },.needBarStateTextTexture = { NULL, 0, 0 },.needBarMaxValue = 200,.needBarCurrentValue = 50 };
-		struct needBar energyBar = { .needBarTitleTextTexture = { NULL, 0, 0 },.needBarStateTextTexture = { NULL, 0, 0 },.needBarMaxValue = 200,.needBarCurrentValue = 50 };
-		struct needBar funBar = { .needBarTitleTextTexture = { NULL, 0, 0 },.needBarStateTextTexture = { NULL, 0, 0 },.needBarMaxValue = 200,.needBarCurrentValue = 50 };
-		load_need_bars_static_text_textures(&hungerBar);
+		struct needBar hungerBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
+		struct needBar thirstBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
+		struct needBar energyBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
+		struct needBar funBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
+		TTF_CloseFont(font);
+		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
+		load_need_bars_static_text_textures(&hungerBar, &thirstBar, &energyBar, &funBar);
 		while (!quit) {
 			while (SDL_PollEvent(&e) != 0) { //Handling events on queue
 				if (e.type == SDL_QUIT) //User requests quit by clicking the standard windows' close button
@@ -124,7 +88,7 @@ int main(int argc, char* args[])
 
 			render_static_windows(activeEventsWindowTextTexture, needsBarsWindowTextTexture, textEventsWindowTextTexture);
 			render_static_buttons(shopButton, gamesButton, saveButton, exitButton);
-			render_need_bars(hungerBar);
+			render_need_bars(hungerBar, thirstBar, energyBar, funBar);
 
 			//Updating the screen
 			SDL_RenderPresent(renderer);
