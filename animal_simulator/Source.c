@@ -8,6 +8,8 @@
 #include "textures.h"
 #include "need_bars.h"
 
+enum currentlyActiveWindow { DEFAULT, SHOP, GAMES };
+
 int load_textures(void);
 void free_textures(void);
 void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h);

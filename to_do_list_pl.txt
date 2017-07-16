@@ -4,15 +4,15 @@ TO DO:
 		[x] statyczne okna i przyciski
 		[x] paski potrzeb
 		[] okno sklepu
-		[] okno eventow
 		[] okno pisemnych eventow
+		[] okno statystyk
 		[] otoczenie postaci
 			[] tlo 
 				[] tlo zalezne od rzeczywistego czasu (opcjonalnie)
 			[] wyposazenie pokoju 
 				[] miski 
 				[] miejsce do spania
-			[] odchody (opcjonalne)
+			[] odchody 
 		[] postac
 			[] szablon postaci
 			[] elementy ubioru
@@ -28,8 +28,13 @@ TO DO:
 		[] otwieranie i zamykanie okna sklepu/gier/jedzenia/picia
 		[] wyswietlanie i wybieranie elementow w oknach sklepu/gier/jedzenia/picia
 		[] uzywanie zabawki/ lozka
-		[] usuwanie odchodow (opcjonalne)
+		[] usuwanie odchodow
 [] mechanika gry
+	[] statystyki postaci i levelowanie
+		[] statystyki postaci (nazwa, poziom, doswiadzenie)
+	[] mechanika odchodow
+		[] tworzenie odchodow w roznych miejscach planszy
+		[] dostawanie pieniedzy i doswiadczenia za pozbywanie sie odchodow 
 	[] zapisywanie stanu gry
 	[] potrzeby postaci i ich zaspokajanie
 		[] glod

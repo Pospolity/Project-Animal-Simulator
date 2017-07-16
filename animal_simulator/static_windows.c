@@ -2,7 +2,7 @@
 
 void render_static_windows(struct texture activeEventsWindowTextTexture, struct texture needsBarsWindowTextTexture, struct texture textEventsWindowTextTexture)
 {
-	render_static_window(activeEventsWindowTextTexture, ACTIVE_EVENTS_WINDOW_TLCX, ACTIVE_EVENTS_WINDOW_TLCY, ACTIVE_EVENTS_WINDOW_WIDTH, ACTIVE_EVENTS_WINDOW_HEIGHT, 140, 10, ACTIVE_EVENTS_WINDOW_RGBA_COLOR);
+	render_static_window(activeEventsWindowTextTexture, STATS_WINDOW_TLCX, STATS_WINDOW_TLCY, STATS_WINDOW_WIDTH, STATS_WINDOW_HEIGHT, 170, 10, STATS_WINDOW_RGBA_COLOR);
 	render_static_window(needsBarsWindowTextTexture, NEEDS_BARS_WINDOW_TLCX, NEEDS_BARS_WINDOW_TLCY, NEEDS_BARS_WINDOW_WIDTH, NEEDS_BARS_WINDOW_HEIGHT, 200, 10, NEEDS_BARS_WINDOW_RGBA_COLOR);
 	render_static_window(textEventsWindowTextTexture, TEXT_EVENTS_WINDOW_TLCX, TEXT_EVENTS_WINDOW_TLCY, TEXT_EVENTS_WINDOW_WIDTH, TEXT_EVENTS_WINDOW_HEIGHT, 20, 10, TEXT_EVENTS_WINDOW_RGBA_COLOR);
 }
@@ -19,7 +19,7 @@ void render_static_window(struct texture staticWindowTextTexture, int x, int y, 
 void load_static_windows_text_textures(struct texture * activeEventsWindowTextTexture, struct texture * needsBarsWindowTextTexture, struct texture * textEventsWindowTextTexture)
 {
 	SDL_Color textColor = { 0, 0, 0 };
-	texture_LoadFromRenderedText(activeEventsWindowTextTexture, "Active Events", textColor);
+	texture_LoadFromRenderedText(activeEventsWindowTextTexture, "Stats", textColor);
 	texture_LoadFromRenderedText(needsBarsWindowTextTexture, "Needs Bars", textColor);
 	texture_LoadFromRenderedText(textEventsWindowTextTexture, "Text Events", textColor);
 }
