@@ -8,7 +8,7 @@
 #include "textures.h"
 #include "need_bars.h"
 
-enum currentlyActiveWindow { DEFAULT, SHOP, GAMES };
+enum activeWindows { DEFAULT, SHOP, GAMES, FOOD, DRINKS };
 
 int load_textures(void);
 void free_textures(void);
@@ -53,11 +53,11 @@ int main(int argc, char* args[])
 	if (success) {
 		int quit = FALSE;
 		SDL_Event e; //Event handler
-		struct texture activeEventsWindowTextTexture = { NULL, 0, 0 };
+		struct texture statsWindowTextTexture = { NULL, 0, 0 };
 		struct texture needsBarsWindowTextTexture = { NULL, 0, 0 };
 		struct texture textEventsWindowTextTexture = { NULL, 0, 0 };
 		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
-		load_static_windows_text_textures(&activeEventsWindowTextTexture, &needsBarsWindowTextTexture, &textEventsWindowTextTexture);
+		load_static_windows_text_textures(&statsWindowTextTexture, &needsBarsWindowTextTexture, &textEventsWindowTextTexture);
 		struct button shopButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
 		struct button gamesButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
 		struct button saveButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
@@ -72,6 +72,7 @@ int main(int argc, char* args[])
 		TTF_CloseFont(font);
 		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
 		load_need_bars_static_text_textures(&hungerBar, &thirstBar, &energyBar, &funBar);
+		enum activeWindows currentlyActiveWindow = DEFAULT;
 		while (!quit) {
 			while (SDL_PollEvent(&e) != 0) { //Handling events on queue
 				if (e.type == SDL_QUIT) //User requests quit by clicking the standard windows' close button
@@ -82,13 +83,23 @@ int main(int argc, char* args[])
 				button_HandleMouseEvents(&exitButton, &e, EXIT_B_TLCX, EXIT_B_TLCY, EXIT_B_WIDTH, EXIT_B_HEIGHT);
 				if (exitButton.buttonState == B_ACTIVE)
 					quit = TRUE;
+				else if (shopButton.buttonState == B_ACTIVE)
+					currentlyActiveWindow = SHOP;
+				else if (gamesButton.buttonState == B_ACTIVE)
+					currentlyActiveWindow = GAMES;
 			}
+			//If games or shop window is the currently open window, we show the button as active
+			if (currentlyActiveWindow == GAMES)
+				gamesButton.buttonState = B_ACTIVE;
+			else if (currentlyActiveWindow == SHOP)
+				shopButton.buttonState = B_ACTIVE;
 
 			//Clearing the screen
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(renderer);
 
-			render_static_windows(activeEventsWindowTextTexture, needsBarsWindowTextTexture, textEventsWindowTextTexture);
+			//Rendering content of the screen buffer
+			render_static_windows(statsWindowTextTexture, needsBarsWindowTextTexture, textEventsWindowTextTexture);
 			render_static_buttons(shopButton, gamesButton, saveButton, exitButton);
 			render_need_bars(hungerBar, thirstBar, energyBar, funBar);
 
