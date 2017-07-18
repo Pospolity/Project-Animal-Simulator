@@ -2,7 +2,7 @@
 
 void render_static_windows(struct texture statsWindowTextTexture, struct texture needsBarsWindowTextTexture, struct texture textEventsWindowTextTexture)
 {
-	render_static_window(statsWindowTextTexture, STATS_WINDOW_TLCX, STATS_WINDOW_TLCY, STATS_WINDOW_WIDTH, STATS_WINDOW_HEIGHT, 170, 10, STATS_WINDOW_RGBA_COLOR);
+	render_static_window(statsWindowTextTexture, STATS_WINDOW_TLCX, STATS_WINDOW_TLCY, STATS_WINDOW_WIDTH, STATS_WINDOW_HEIGHT, 170, 10, STATS_WINDOW_RGBA_COLOR); // values responsible for text padding are temporary, and will be replaced by proper constants
 	render_static_window(needsBarsWindowTextTexture, NEEDS_BARS_WINDOW_TLCX, NEEDS_BARS_WINDOW_TLCY, NEEDS_BARS_WINDOW_WIDTH, NEEDS_BARS_WINDOW_HEIGHT, 200, 10, NEEDS_BARS_WINDOW_RGBA_COLOR);
 	render_static_window(textEventsWindowTextTexture, TEXT_EVENTS_WINDOW_TLCX, TEXT_EVENTS_WINDOW_TLCY, TEXT_EVENTS_WINDOW_WIDTH, TEXT_EVENTS_WINDOW_HEIGHT, 20, 10, TEXT_EVENTS_WINDOW_RGBA_COLOR);
 }

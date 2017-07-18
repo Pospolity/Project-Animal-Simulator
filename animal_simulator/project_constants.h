@@ -85,6 +85,10 @@
 #define FUN_BAR_TEXT_TLCX ENERGY_BAR_TEXT_TLCX
 #define FUN_BAR_TEXT_TLCY THIRST_BAR_TEXT_TLCY
 #define MAX_BAR_VALUES_TEXT_SIZE 12 // xxxxx/yyyyy\n
+/*FONTS*/
+#define FONT_NAME "funnypages.ttf"
+#define BUTTONS_FONT_SIZE 24
+#define DEFAULT_FONT_SIZE 14
 
 //#define SLEEP_B_WIDTH 
 //#define SLEEP_B_HEIGHT 

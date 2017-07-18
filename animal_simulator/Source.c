@@ -56,21 +56,21 @@ int main(int argc, char* args[])
 		struct texture statsWindowTextTexture = { NULL, 0, 0 };
 		struct texture needsBarsWindowTextTexture = { NULL, 0, 0 };
 		struct texture textEventsWindowTextTexture = { NULL, 0, 0 };
-		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
+		font = TTF_OpenFont(FONT_NAME, DEFAULT_FONT_SIZE); //setting the font
 		load_static_windows_text_textures(&statsWindowTextTexture, &needsBarsWindowTextTexture, &textEventsWindowTextTexture);
 		struct button shopButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
 		struct button gamesButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
 		struct button saveButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
 		struct button exitButton = { .buttonTextTexture = { NULL, 0, 0 }, .buttonState = B_INACTIVE };
 		TTF_CloseFont(font);
-		font = TTF_OpenFont("funnypages.ttf", 24); //setting the font
+		font = TTF_OpenFont(FONT_NAME, BUTTONS_FONT_SIZE); //setting the font
 		load_static_buttons_text_textures(&shopButton, &gamesButton, &saveButton, &exitButton);
-		struct needBar hungerBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
+		struct needBar hungerBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 }; //values of maxValues and currentValues are temporary, and will be set from the animal properties file in the future 
 		struct needBar thirstBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
 		struct needBar energyBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
 		struct needBar funBar = { .titleTextTexture = { NULL, 0, 0 },.valueTextTexture = { NULL, 0, 0 },.maxValue = 200,.currentValue = 50 };
 		TTF_CloseFont(font);
-		font = TTF_OpenFont("funnypages.ttf", 14); //setting the font
+		font = TTF_OpenFont(FONT_NAME, DEFAULT_FONT_SIZE); //setting the font
 		load_need_bars_static_text_textures(&hungerBar, &thirstBar, &energyBar, &funBar);
 		enum activeWindows currentlyActiveWindow = DEFAULT;
 		while (!quit) {
