@@ -14,6 +14,7 @@ struct button
 };
 
 void button_HandleMouseEvents(struct button * button, SDL_Event * e, int buttonX, int buttonY, int buttonWidth, int buttonHeight);
+void switch_button_state(struct button button, int x, int y, int w, int h, int leftTextPadding, int topTextPadding);
 void render_static_buttons(struct button shopButton, struct button gamesButton, struct button saveButton, struct button exitButton);
 void render_static_button(struct texture staticButtonTextTexture, int x, int y, int w, int h, int leftTextPadding, int topTextPadding, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 void load_static_buttons_text_textures(struct button * shopButton, struct button * gamesButton, struct button * saveButton, struct button * exitButton);
