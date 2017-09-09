@@ -8,27 +8,29 @@ TO DO:
 		[] okno statystyk
 		[] otoczenie postaci
 			[] tlo 
-				[] tlo zalezne od rzeczywistego czasu (opcjonalnie)
+				[*] tlo zalezne od rzeczywistego czasu (opcjonalnie)
 			[] wyposazenie pokoju 
-				[] miski 
-				[] miejsce do spania
+				[x] miski 
+				[x] miejsce do spania
 			[] odchody 
 		[] postac
 			[] szablon postaci
-			[] elementy ubioru
-				[] czapka
-				[] buty
-				[] ozdoba
-			[] zabawka
-		[] okno wyboru jedzenia
-		[] okno wyboru picia
+			[*] elementy ubioru (opcjonalnie)
+				[*] czapka (opcjonalnie)
+				[*] buty (opcjonalnie)
+				[*] ozdoba (opcjonalnie)
+			[x] zabawka 
+		[*] okno wyboru jedzenia po kliknieciu PPM (opcjonalnie)
+		[*] okno wyboru picia po kliknieciu PPM (opcjonalnie)
 		[] okno wyboru gier
 	[] obsluga klikalnych elementow
 		[] wychodzenie/zapisywanie
-		[] otwieranie i zamykanie okna sklepu/gier/jedzenia/picia
-		[] wyswietlanie i wybieranie elementow w oknach sklepu/gier/jedzenia/picia
-		[] uzywanie zabawki/ lozka
-		[] usuwanie odchodow
+		[] otwieranie i zamykanie okna sklepu/gier
+		[] otwieranie i zamykanie okna jedzenia/picia (opcjonalnie)
+		[] wyswietlanie i wybieranie elementow w oknach sklepu/gier
+		[] wyswietlanie i wybieranie elementow w oknach jedzenia/picia (opcjonalnie)
+		[x] uzywanie zabawki/ lozka
+		[] zbieranie odchodow
 [] mechanika gry
 	[] statystyki postaci i levelowanie
 		[] statystyki postaci (nazwa, poziom, doswiadzenie)
@@ -41,11 +43,10 @@ TO DO:
 		[] pragnienie
 		[] energia
 		[] zabawa
-		[] higiena (opcjonalnie)
-		[] zdrowie (opcjonalnie)
-	[] kupowanie przedmiotow w sklepie/ oknie jedzenia/ picia i wybor posiadanych
-		[] bonusy do potrzeb lub ich zaspokajanie
-		[] listowanie przedmiotow po ID wedlug typu przedmiotu i jego statystyk
+		[*] higiena (opcjonalnie)
+		[*] zdrowie (opcjonalnie)
+	[] levelowanie przedmiotow w sklepie i wybor posiadanych
+		[] bonusy do potrzeb
 		[] wydawanie $$$
 	[] minigry
 		[] snake
@@ -53,7 +54,7 @@ TO DO:
 		[] zdobywanie $$$ w minigrach
 	[] rodzaje postaci
 		[] bonusy do potrzeb zalezne od rodzaju postaci
-		[] zabawki zalezne od postaci
+		[*] zabawki zalezne od postaci (opcjonalnie)
 		[] postaci do wyboru:
 			[] pies
 			[] kot
@@ -64,7 +65,7 @@ TO DO:
 		[] pisemne opisy eventow
 		[] eventy aktywne okreslony czas
 		[] bonusy z eventow
-	[] bonusy do potrzeb i eventy zalezne od rzeczywistego czasu (opcjonalnie) 
+	[*] bonusy do potrzeb i eventy zalezne od rzeczywistego czasu (opcjonalnie) 
 [] uruchamianie gry
 	[] uruchamianie przez ikone/konsole bez atrybutow
 		[] wypisywanie istniejacych zapisow
@@ -76,18 +77,18 @@ TO DO:
 [] zasoby
 	[] tla
 	[] postaci
-	[] przedmioty (lista z id_kategorii, id_przedmiotu + wyglad)
-		[] czapki
-		[] ozdoby
-		[] buty
+	[*] przedmioty (opcjonalnie)
+		[*] czapki (opcjonalnie)
+		[*] ozdoby (opcjonalnie)
+		[*] buty (opcjonalnie)
 	[] jedzenie
 	[] picie
 	[] wyposazenie
-		[] zabawka
-		[] miska jedzenia (opcjonalnie)
-		[] miska picia (opcjonalnie)
+		[x] zabawka
+		[x] miska jedzenia
+		[x] miska picia
+		[x] miejsce do spania
 		[] inne wyposazenie domu (opcjonalne)
 	[] eventy
 		[] opisy eventow pisemnych
-		[] miniatury eventow aktywnych
-	[] odchody (opcjonalne)
+	[] odchody

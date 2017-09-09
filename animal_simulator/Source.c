@@ -40,6 +40,7 @@ int main(int argc, char* args[])
 {
 	gameWindow = NULL;
 	renderer = NULL;
+	gameOver = FALSE;
 	int success = TRUE;
 	if (!SDL_initialize()) {
 		success = FALSE;
@@ -51,7 +52,7 @@ int main(int argc, char* args[])
 			printf("Failed to load textures!\n");
 		}
 	if (success) {
-		int quit = FALSE;
+		int success = TRUE;
 		SDL_Event e; //Event handler
 		struct texture statsWindowTextTexture = { NULL, 0, 0 };
 		struct texture needsBarsWindowTextTexture = { NULL, 0, 0 };
@@ -72,11 +73,16 @@ int main(int argc, char* args[])
 		TTF_CloseFont(font);
 		font = TTF_OpenFont(FONT_NAME, DEFAULT_FONT_SIZE); //setting the font
 		load_need_bars_static_text_textures(&hungerBar, &thirstBar, &energyBar, &funBar);
+		struct imageButton imageButtons[NUMBER_OF_IMAGE_BUTTONS]; //= imageButtonsInit();
+		success = success && load_character_window_buttons_textures(imageButtons);
+		
 		enum activeWindows currentlyActiveWindow = DEFAULT;
+		int quit = !success; // if succes was true - quit will be false, so the game's main loop will start
 		while (!quit) {
 			while (SDL_PollEvent(&e) != 0) { //Handling events on queue
 				if (e.type == SDL_QUIT) //User requests quit by clicking the standard windows' close button
 					quit = TRUE;
+				
 				button_HandleMouseEvents(&shopButton, &e, SHOP_B_TLCX, SHOP_B_TLCY, SHOP_B_WIDTH, SHOP_B_HEIGHT);
 				button_HandleMouseEvents(&gamesButton, &e, GAMES_B_TLCX, GAMES_B_TLCY, GAMES_B_WIDTH, GAMES_B_HEIGHT);
 				button_HandleMouseEvents(&saveButton, &e, SAVE_B_TLCX, SAVE_B_TLCY, SAVE_B_WIDTH, SAVE_B_HEIGHT);
@@ -87,6 +93,29 @@ int main(int argc, char* args[])
 					currentlyActiveWindow = SHOP;
 				else if (gamesButton.buttonState == B_ACTIVE)
 					currentlyActiveWindow = GAMES;
+
+				if (currentlyActiveWindow == DEFAULT) {
+					handle_image_buttons_mouse_events(imageButtons, &e);
+					if (imageButtons[FOOD_B].buttonState == IB_CLICKED) {
+						update_bars_value(&hungerBar, 10);//TODO
+						update_bars_value(&energyBar, -5);
+					}
+					else if (imageButtons[DRINKS_B].buttonState == IB_CLICKED) {
+						update_bars_value(&thirstBar, 10);//TODO
+						update_bars_value(&energyBar, -5);
+					}
+					else if (imageButtons[TOY_B].buttonState == IB_CLICKED) {
+						update_bars_value(&funBar, 10);//TODO
+						update_bars_value(&hungerBar, -5);
+						update_bars_value(&thirstBar, -5);
+						update_bars_value(&energyBar, -15);
+					}
+					else if (imageButtons[SLEEP_B].buttonState == IB_CLICKED) {
+						update_bars_value(&energyBar, 10);//TODO
+						update_bars_value(&hungerBar, -5);
+						update_bars_value(&thirstBar, -5);
+					}
+				}
 			}
 			//If games or shop window is the currently open window, we show the button as active
 			if (currentlyActiveWindow == GAMES)
@@ -102,12 +131,23 @@ int main(int argc, char* args[])
 			render_static_windows(statsWindowTextTexture, needsBarsWindowTextTexture, textEventsWindowTextTexture);
 			render_static_buttons(shopButton, gamesButton, saveButton, exitButton);
 			render_need_bars(hungerBar, thirstBar, energyBar, funBar);
+			render_character_window_image_buttons(imageButtons);
+
+			//Check if game didn't ended
+			if (gameOver == TRUE) {
+				quit = TRUE;
+				//TODO: print information to user and check until he hit enter
+			}
 
 			//Updating the screen
 			SDL_RenderPresent(renderer);
 		}
+		//free textures. TODO: (move it to free_textures function)
+		for (int i = 0; i < NUMBER_OF_IMAGE_BUTTONS; i++)
+			for (int j = 0; j < NUMBER_OF_IB_STATES_WITH_GRAPHIC; j++)
+				SDL_DestroyTexture(imageButtons[i].imageTextures[j].texture);
+		// TODO: check if this texture still exist
 	}
-
 	free_textures();
 	SDL_close();
 

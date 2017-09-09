@@ -1,8 +1,7 @@
 #include "buttons.h"
 
 void button_HandleMouseEvents(struct button * button, SDL_Event * e, int buttonX, int buttonY, int buttonWidth, int buttonHeight) {
-	if (e->type == SDL_MOUSEMOTION || e->type == SDL_MOUSEBUTTONDOWN || e->type == SDL_MOUSEBUTTONUP)
-	{
+	if (e->type == SDL_MOUSEMOTION || e->type == SDL_MOUSEBUTTONDOWN || e->type == SDL_MOUSEBUTTONUP){
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 		int inside = TRUE;
@@ -28,6 +27,47 @@ void button_HandleMouseEvents(struct button * button, SDL_Event * e, int buttonX
 				break;
 			case SDL_MOUSEBUTTONUP:
 				button->buttonState = B_HIGHLIGHTED;
+				break;
+			}
+		}
+	}
+}
+
+void handle_image_buttons_mouse_events(struct imageButton imageButtons[], SDL_Event * e) {
+	for (int i = 0; i < NUMBER_OF_IMAGE_BUTTONS; i++)
+		imageButton_HandleMouseEvent(&imageButtons[i], e);
+}
+
+void imageButton_HandleMouseEvent(struct imageButton * button, SDL_Event * e) {
+	if (e->type == SDL_MOUSEMOTION || e->type == SDL_MOUSEBUTTONDOWN || e->type == SDL_MOUSEBUTTONUP) {
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		int inside = TRUE;
+		int currentButtonState = button->buttonState;
+		if (currentButtonState == IB_CLICKED)
+			currentButtonState = IB_HIGHLIGHTED; // IB_CLICKED doesn't have its own texture so we treat it, as it was IB_HIGHLIGHTED (because we need dimensions of textures for different button states)
+
+		if (x < button->X)
+			inside = FALSE;
+		else if (x > button->X + button->imageTextures[currentButtonState].width)
+			inside = FALSE;
+		else if (y < button->Y)
+			inside = FALSE;
+		else if (y > button->Y + button->imageTextures[currentButtonState].height)
+			inside = FALSE;
+
+		if (!inside)
+			button->buttonState = IB_INACTIVE;
+		else {
+			switch (e->type) {
+			case SDL_MOUSEMOTION:
+				button->buttonState = IB_HIGHLIGHTED;
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				button->buttonState = IB_CLICKED;
+				break;
+			case SDL_MOUSEBUTTONUP:
+				button->buttonState = IB_HIGHLIGHTED;
 				break;
 			}
 		}
@@ -70,4 +110,54 @@ void load_static_buttons_text_textures(struct button * shopButton, struct button
 	texture_LoadFromRenderedText(&(gamesButton->buttonTextTexture), "Games", textColor);
 	texture_LoadFromRenderedText(&(saveButton->buttonTextTexture), "Save", textColor);
 	texture_LoadFromRenderedText(&(exitButton->buttonTextTexture), "Exit", textColor);
+}
+
+int load_character_window_buttons_textures(struct imageButton imageButtons[NUMBER_OF_IMAGE_BUTTONS])
+{
+	int success = TRUE;
+	char path[MAX_FILE_PATH_LENGTH];
+	char constPath[] = "media/image_buttons/";
+	for (int i = 0; i < NUMBER_OF_IMAGE_BUTTONS; i++) {
+		sprintf_s(path, MAX_FILE_PATH_LENGTH, "%s%d.png", constPath, i);
+		imageButtons[i].imageTextures[IB_INACTIVE] = texture_LoadFromImage(path);
+		sprintf_s(path, MAX_FILE_PATH_LENGTH, "%s%dh.png", constPath, i);
+		imageButtons[i].imageTextures[IB_HIGHLIGHTED] = texture_LoadFromImage(path);
+		if (imageButtons[i].imageTextures[IB_INACTIVE].texture == NULL || imageButtons[i].imageTextures[IB_HIGHLIGHTED].texture == NULL) {
+			success = FALSE;
+			break;
+		}
+		set_image_button_tlcs(&imageButtons[i], i);
+		imageButtons[i].buttonState = IB_INACTIVE;
+	}
+	return success;
+}
+
+void render_character_window_image_buttons(struct imageButton imageButtons[NUMBER_OF_IMAGE_BUTTONS])
+{
+	for (int i = 0; i < NUMBER_OF_IMAGE_BUTTONS; i++) {
+		struct imageButton button = imageButtons[i];
+		switch (button.buttonState) {
+		case IB_INACTIVE:
+			render_character_window_image_button(button.imageTextures[IB_INACTIVE], button.X, button.Y); break;
+		case IB_CLICKED: // IB_CLICKED doesn't have its own texture so we show it, as it was IB_HIGHLIGHTED
+		case IB_HIGHLIGHTED:
+			render_character_window_image_button(button.imageTextures[IB_HIGHLIGHTED], button.X, button.Y); break;
+		}
+	}
+}
+
+void render_character_window_image_button(struct texture imageTexture, int x, int y)
+{
+	SDL_Rect renderQuad = { x, y, imageTexture.width, imageTexture.height };
+	SDL_RenderCopy(renderer, imageTexture.texture, NULL, &renderQuad);
+}
+
+void set_image_button_tlcs(struct imageButton * imageButton, enum imageButtons currentButton)
+{
+	switch (currentButton) {
+	case SLEEP_B: imageButton->X = SLEEP_B_TLCX; imageButton->Y = SLEEP_B_TLCY; break;
+	case FOOD_B: imageButton->X = FOOD_B_TLCX; imageButton->Y = FOOD_B_TLCY; break;
+	case DRINKS_B: imageButton->X = DRINKS_B_TLCX; imageButton->Y = DRINKS_B_TLCY; break;
+	case TOY_B: imageButton->X = TOY_B_TLCX; imageButton->Y = TOY_B_TLCY; break;
+	}
 }

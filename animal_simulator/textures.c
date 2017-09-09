@@ -24,3 +24,24 @@ void texture_LoadFromRenderedText(struct texture * textTexture, char * textStrin
 		SDL_FreeSurface(textSurface);
 	}
 }
+struct texture texture_LoadFromImage(char * sourcePath)
+{
+	struct texture newTexture;
+	SDL_Texture* newSDLTexture = NULL;
+	SDL_Surface* loadedSurface = IMG_Load(sourcePath);
+	if (loadedSurface == NULL)
+		printf("Unable to load image %s! SDL_image Error: %s\n", sourcePath, IMG_GetError());
+	else {
+		newSDLTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+		if (newSDLTexture == NULL) {
+			printf("Unable to create texture from %s! SDL Error: %s\n", sourcePath, SDL_GetError());
+		} else {
+			newTexture.height = loadedSurface->h;
+			newTexture.width = loadedSurface->w;
+		}
+		newTexture.texture = newSDLTexture; // if something gone wrong it will be set as NULL, so we can use it later to check if we can use this texture without causing unexpected error
+		SDL_FreeSurface(loadedSurface);
+	}
+
+	return newTexture;
+}

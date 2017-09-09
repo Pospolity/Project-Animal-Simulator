@@ -16,3 +16,4 @@ struct needBar
 void render_need_bar(struct needBar needBar, int x, int y);
 void render_need_bars(struct needBar hungerBar, struct needBar thirstBar, struct needBar energyBar, struct needBar funBar);
 void load_need_bars_static_text_textures(struct needBar * hungerBar, struct needBar * thirstBar, struct needBar * energyBar, struct needBar * funBar);
+void update_bars_value(struct needBar * bar, int change);

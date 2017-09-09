@@ -5,25 +5,26 @@
 /*GENERAL*/
 #define TRUE 1
 #define FALSE 0
+#define MAX_FILE_PATH_LENGTH 50
 /*MAIN WINDOW*/
 /*M*/#define MAIN_WINDOW_WIDTH 960
 /*M*/#define MAIN_WINDOW_HEIGHT 540
-/*STATIC WINDOWS*/ // static means here that type of content in the window doesn't change, however the items in this content can change (e.g. active events window is always in the right top corner, but single events in this window can change)
+/*STATIC WINDOWS*/ // static means here that type of content in the window doesn't change, however the items in this content can change (e.g. statistics window is always in the left top corner, but single stats in this window can change)
 /*M*/#define STATS_WINDOW_WIDTH 400
 /*M*/#define STATS_WINDOW_HEIGHT 140
 #define STATS_WINDOW_TLCX 0
 #define STATS_WINDOW_TLCY 0
-#define STATS_WINDOW_RGBA_COLOR 26, 188, 156, 255
+#define STATS_WINDOW_RGBA_COLOR 178, 223, 219, 255 //26, 188, 156
 /*M*/#define NEEDS_BARS_WINDOW_WIDTH 480
 #define NEEDS_BARS_WINDOW_HEIGHT STATS_WINDOW_HEIGHT
 #define NEEDS_BARS_WINDOW_TLCX STATS_WINDOW_WIDTH
 #define NEEDS_BARS_WINDOW_TLCY 0
-#define NEEDS_BARS_WINDOW_RGBA_COLOR 243, 156, 18, 255
+#define NEEDS_BARS_WINDOW_RGBA_COLOR 178, 235, 242, 255
 #define TEXT_EVENTS_WINDOW_WIDTH MAIN_WINDOW_WIDTH
 #define TEXT_EVENTS_WINDOW_HEIGHT (MAIN_WINDOW_HEIGHT - STATS_WINDOW_HEIGHT - ACTIVE_WINDOW_HEIGHT)
 #define TEXT_EVENTS_WINDOW_TLCX 0
 #define TEXT_EVENTS_WINDOW_TLCY (MAIN_WINDOW_HEIGHT - TEXT_EVENTS_WINDOW_HEIGHT)
-#define TEXT_EVENTS_WINDOW_RGBA_COLOR 192, 57, 43, 255
+#define TEXT_EVENTS_WINDOW_RGBA_COLOR 255, 204, 188, 255 // 192, 57, 43
 /*CHARACTER / SHOP / GAME / FOOD / DRINK WINDOW*/
 /*M*/#define	ACTIVE_WINDOW_WIDTH 800
 /*M*/#define ACTIVE_WINDOW_HEIGHT 280
@@ -66,7 +67,11 @@
 #define NEED_BAR_SIDE_PADDING 20 // left and right padding of every bar 
 #define NEED_BAR_BORDER_RGBA_COLOR 0, 0, 0, 255
 #define NEED_BAR_RGBA_COLOR_EMPTY 255, 255, 255, 255
-#define NEED_BAR_RGBA_COLOR_FILLING 205, 220, 57, 255
+#define NEED_BAR_RGBA_COLOR_PERFECT 0, 204, 0, 255 
+#define NEED_BAR_RGBA_COLOR_GOOD 0, 245, 0, 255 
+#define NEED_BAR_RGBA_COLOR_NORMAL 205, 220, 57, 255
+#define NEED_BAR_RGBA_COLOR_WARNING 255, 128, 0, 255
+#define NEED_BAR_RGBA_COLOR_DANGER 255, 69, 0, 255
 #define HUNGER_BAR_TEXT_TLCX (NEEDS_BARS_WINDOW_TLCX + NEED_BAR_SIDE_PADDING)
 #define HUNGER_BAR_TEXT_TLCY (NEEDS_BARS_WINDOW_TLCY + NEED_BARS_PADDING_FROM_TOP)
 #define THIRST_BAR_TEXT_TLCX HUNGER_BAR_TEXT_TLCX
@@ -80,15 +85,16 @@
 #define FONT_NAME "funnypages.ttf"
 #define BUTTONS_FONT_SIZE 24
 #define DEFAULT_FONT_SIZE 14
-
-//#define SLEEP_B_WIDTH 
-//#define SLEEP_B_HEIGHT 
-//#define FOOD_B_WIDTH 
-//#define FOOD_B_HEIGHT 
-//#define DRINKS_B_WIDTH 
-//#define DRINKS_B_HEIGHT 
-//#define TOY_B_WIDTH 
-//#define TOY_B_HEIGHT 
+/*CHARACTER (DEFAULT) WINDOW VIEW*/
+#define SLEEP_B_TLCX ACTIVE_WINDOW_TLCX + 490
+#define SLEEP_B_TLCY ACTIVE_WINDOW_TLCY + 10
+#define FOOD_B_TLCX ACTIVE_WINDOW_TLCX + 460
+#define FOOD_B_TLCY ACTIVE_WINDOW_TLCY + 110
+#define DRINKS_B_TLCX FOOD_B_TLCX + 160
+#define DRINKS_B_TLCY FOOD_B_TLCY
+#define TOY_B_TLCX ACTIVE_WINDOW_TLCX + 20
+#define TOY_B_TLCY ACTIVE_WINDOW_TLCY + 170
+/*STATS WINDOW VIEW*/
 
 /*
 	names abbreviations:
