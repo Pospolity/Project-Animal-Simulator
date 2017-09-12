@@ -10,7 +10,7 @@ void texture_Free(struct texture * textureToFree)
 	}
 }
 
-void texture_LoadFromRenderedText(struct texture * textTexture, char * textString, SDL_Color textColor)
+void texture_LoadFromRenderedText(struct texture * textTexture, char * textString, SDL_Color textColor, TTF_Font * font)
 {
 	texture_Free(textTexture);
 

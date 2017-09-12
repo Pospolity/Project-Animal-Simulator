@@ -19,7 +19,7 @@ void render_static_window(struct texture staticWindowTextTexture, int x, int y, 
 void load_static_windows_text_textures(struct texture * statsWindowTextTexture, struct texture * needsBarsWindowTextTexture, struct texture * textEventsWindowTextTexture)
 {
 	SDL_Color textColor = { 0, 0, 0 };
-	texture_LoadFromRenderedText(statsWindowTextTexture, "Stats", textColor);
-	texture_LoadFromRenderedText(needsBarsWindowTextTexture, "Needs Bars", textColor);
-	texture_LoadFromRenderedText(textEventsWindowTextTexture, "Text Events", textColor);
+	texture_LoadFromRenderedText(statsWindowTextTexture, "Stats", textColor, font);
+	texture_LoadFromRenderedText(needsBarsWindowTextTexture, "Needs Bars", textColor, font);
+	texture_LoadFromRenderedText(textEventsWindowTextTexture, "Text Events", textColor, font);
 }

@@ -106,10 +106,10 @@ void render_static_button(struct texture staticButtonTextTexture, int x, int y, 
 void load_static_buttons_text_textures(struct button * shopButton, struct button * gamesButton, struct button * saveButton, struct button * exitButton)
 {
 	SDL_Color textColor = { 0, 0, 0 };
-	texture_LoadFromRenderedText(&(shopButton->buttonTextTexture), "Shop", textColor);
-	texture_LoadFromRenderedText(&(gamesButton->buttonTextTexture), "Games", textColor);
-	texture_LoadFromRenderedText(&(saveButton->buttonTextTexture), "Save", textColor);
-	texture_LoadFromRenderedText(&(exitButton->buttonTextTexture), "Exit", textColor);
+	texture_LoadFromRenderedText(&(shopButton->buttonTextTexture), "Shop", textColor, font);
+	texture_LoadFromRenderedText(&(gamesButton->buttonTextTexture), "Games", textColor, font);
+	texture_LoadFromRenderedText(&(saveButton->buttonTextTexture), "Save", textColor, font);
+	texture_LoadFromRenderedText(&(exitButton->buttonTextTexture), "Exit", textColor, font);
 }
 
 int load_character_window_buttons_textures(struct imageButton imageButtons[NUMBER_OF_IMAGE_BUTTONS])

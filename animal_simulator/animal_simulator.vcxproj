@@ -124,7 +124,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="buttons.c" />
-    <ClCompile Include="need_bars.c" />
+    <ClCompile Include="bars.c" />
+    <ClCompile Include="events.c" />
     <ClCompile Include="SDL_management_functions.c" />
     <ClCompile Include="Source.c" />
     <ClCompile Include="static_windows.c" />
@@ -132,7 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="buttons.h" />
-    <ClInclude Include="need_bars.h" />
+    <ClInclude Include="bars.h" />
+    <ClInclude Include="commons.h" />
+    <ClInclude Include="events.h" />
     <ClInclude Include="project_constants.h" />
     <ClInclude Include="project_global_variables.h" />
     <ClInclude Include="project_libraries.h" />

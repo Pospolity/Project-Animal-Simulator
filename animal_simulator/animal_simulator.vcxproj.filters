@@ -30,7 +30,10 @@
     <ClCompile Include="static_windows.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="need_bars.c">
+    <ClCompile Include="bars.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="events.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +59,13 @@
     <ClInclude Include="textures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="need_bars.h">
+    <ClInclude Include="bars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="commons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="events.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

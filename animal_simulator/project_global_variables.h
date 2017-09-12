@@ -6,4 +6,5 @@
 SDL_Window* gameWindow;
 SDL_Renderer* renderer;
 TTF_Font *font;
+TTF_Font *textEventsFont;
 int gameOver;
