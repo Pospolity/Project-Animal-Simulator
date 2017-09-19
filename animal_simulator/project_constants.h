@@ -2,11 +2,24 @@
 //macros used in project (names abbreviations on the end)
 //dimensions of main application structure's windows and buttons are responsive to dimentions of some main parts pointed by /*M*/
 
+
 /*GENERAL*/
 #define TRUE 1
 #define FALSE 0
 #define MAX_FILE_PATH_LENGTH 50
 #define MAX_ANIMAL_NAME_LENGTH 20
+#define SAVE_FILE_FOLDER "saves/"
+#define SAVE_FILE_FOLDER_LENGTH 7
+#define FILE_EXTENTION ".sav"
+#define FILE_EXTENTION_LENGTH 5
+#define BLACK_RGB_COLOR 0, 0, 0
+#define BLACK_RGBA_COLOR 0, 0, 0, 255
+#define WHITE_RGBA_COLOR 255, 255, 255, 255
+#define VALUE_NOT_PROVIDED -1
+#define LVL_EXP_MULTIPLIER 3
+#define EMPTY_OBJECT 0 // setting first value to 0 (EMPTY_OBJECT) automatically sets values of other fields of structre to 0 or NULL (but not undefined anymore)
+#define DEFAULT_LVL_UP_BAR_MAXVALUE_UPGRADE 20
+#define LVL_UP_TEXT_TEMPLATE "You have just level-uped. Good job! Your max possible %s is rising!"
 /*MAIN WINDOW*/
 /*M*/#define MAIN_WINDOW_WIDTH 960
 /*M*/#define MAIN_WINDOW_HEIGHT 540
@@ -30,8 +43,18 @@
 /*M*/#define	ACTIVE_WINDOW_WIDTH 800
 /*M*/#define ACTIVE_WINDOW_HEIGHT 280
 #define ACTIVE_WINDOW_TLCX (MAIN_WINDOW_WIDTH - ACTIVE_WINDOW_WIDTH)
-#define ACTIVE_WINDOW_TLCY STATS_WINDOW_HEIGHT
+#define ACTIVE_WINDOW_TLCY STATS_WINDOW_HEIGHT 
 #define ROOM_IMG_PATH "media/room.png"
+#define SHOP_IMG_PATH "media/shop.png"
+#define TEXT_SHOP_EMPTY "The shop is empty today. You only see sad picture of two grannies convinced that it can not be possible."
+#define GO_BACK_B_WIDTH 80
+#define GO_BACK_B_HEIGHT ACTIVE_WINDOW_HEIGHT
+#define GO_BACK_B_TLCX ACTIVE_WINDOW_TLCX
+#define GO_BACK_B_TLCY ACTIVE_WINDOW_TLCY 
+#define FOOD_B_DEFAULT_BARS_CHANGE 10, 0, -5, 0
+#define DRINKS_B_DEFAULT_BARS_CHANGE 0, 10, -5, 0
+#define SLEEP_B_DEFAULT_BARS_CHANGE -5, -5, -10, 10
+#define FUN_B_DEFAULT_BARS_CHANGE -5, -5, 10, 0
 /*STATIC BUTTONS*/
 #define SHOP_B_WIDTH (MAIN_WINDOW_WIDTH - ACTIVE_WINDOW_WIDTH)
 #define SHOP_B_HEIGHT (ACTIVE_WINDOW_HEIGHT/2)
@@ -60,6 +83,7 @@
 #define DEFAULT_B_RGBA_COLOR_INACTIVE 236, 240, 241, 255
 #define DEFAULT_B_RGBA_COLOR_HIGHLIGHTED 149, 165, 166, 255
 #define DEFAULT_B_RGBA_COLOR_ACTIVE 52, 73, 94, 255
+#define DEFAULT_B_RGBA_COLOR_LOCKED 158, 158, 158, 255
 /*NEEDS BARS AND BARS*/
 #define EXP_BAR_WIDTH 200
 #define EXP_BAR_HEIGHT 20
@@ -85,6 +109,8 @@
 #define FUN_BAR_TEXT_TLCX ENERGY_BAR_TEXT_TLCX
 #define FUN_BAR_TEXT_TLCY THIRST_BAR_TEXT_TLCY
 #define MAX_BAR_VALUES_TEXT_SIZE 12 // xxxxx/yyyyy\n
+#define DEFAULT_START_MAX_VALUE_OF_BAR 100
+#define DEFAULT_STARTING_BARS_VALUES 1, 0, 0, name, VALUE_NOT_PROVIDED, DEFAULT_START_MAX_VALUE_OF_BAR, VALUE_NOT_PROVIDED, DEFAULT_START_MAX_VALUE_OF_BAR, VALUE_NOT_PROVIDED, DEFAULT_START_MAX_VALUE_OF_BAR, VALUE_NOT_PROVIDED, DEFAULT_START_MAX_VALUE_OF_BAR // when using this macro be sure that animal name variable is "name"
 /*USABLE OBJECTS*/
 #define DEFAULT_OBJECT_RELATED_TO_NEED_MIN_USE_EFFECT 5
 #define DEFAULT_OBJECT_RELATED_TO_NEED_MAX_USE_EFFECT 10
@@ -110,19 +136,41 @@
 #define DRINKS_B_TLCY FOOD_B_TLCY
 #define TOY_B_TLCX ACTIVE_WINDOW_TLCX + 20
 #define TOY_B_TLCY ACTIVE_WINDOW_TLCY + 170
+#define ANIMAL_IMG_TLCX 400
+#define ANIMAL_IMG_TLCY 200
 /*STATS WINDOW VIEW*/
 #define MAX_ANIMAL_LVL 99
 #define MAX_LVL_TEXT_SIZE 8 // "LVL: xx\n" = 8 chars
 #define MAX_MONEY_AMOUNT_TEXT_SIZE 10 // max amount: "999999999\n" 
 #define MAX_MONEY_AMOUNT (unsigned long)999999999 // unsigned long can handle numbers to 4,294,967,295, so 999,999,999 is my choice to max amount of money
 #define COIN_TEXTURE_PATH "media/coin.png"
-#define DOGE_IMG_PATH "media/doge.png" // [PRE]
+#define DOGE_IMG_PATH "media/doge.png"
+#define CAT_IMG_PATH "media/cat.png"
+#define HAMSTER_IMG_PATH "media/hamster.png"
+#define ALLIGATOR_IMG_PATH "media/alligator.png"
+#define NAME_TLCX 10
+#define NAME_TLCY 30
+#define LVL_TLCX NAME_TLCX
+#define LVL_TLCY 50
+#define EXP_TLCX NAME_TLCX
+#define EXP_TLCY 70
+#define EXP_BAR_RGBA_COLOR 52, 152, 219, 255
+#define COIN_IMG_TLCX NAME_TLCX
+#define COIN_IMG_TLCY 115
+#define MONEY_AMOUNT_TLCX 40
+#define MONEY_AMOUNT_TLCY 117
 /*TEXT EVENTS*/
 #define MAX_EVENT_MESSAGE_LENGTH 110 //number is set so that text can't reach the end of text event window
 #define MAX_NUMBER_OF_EVENTS 6 // [PRE]
+/*POOS*/
+#define MAX_NUMBER_OF_COIN_FROM_POO 20
+#define DEFAULT_POO_TIME 2000 // in ms 
+#define POO_INACTIVE_IMG_PATH "media/poo_i.png"
+#define POO_HIGHLIGHTED_IMG_PATH "media/poo_h.png"
+#define POO_CLICKED_IMG_PATH POO_INACTIVE_IMG_PATH // we want the same image to be shown as in inactive state
 /*
 	names abbreviations:
-b - button
+B - button
 TLC - top left corner
 
 

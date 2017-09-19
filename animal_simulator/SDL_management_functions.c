@@ -17,7 +17,7 @@ int SDL_initialize()
 				success = FALSE;
 			else
 			{
-				SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+				SDL_SetRenderDrawColor(renderer, WHITE_RGBA_COLOR);
 				int imgFlags = IMG_INIT_PNG;
 				if (!(IMG_Init(imgFlags) & imgFlags))
 					success = FALSE;
@@ -44,3 +44,11 @@ void SDL_close()
 	IMG_Quit();
 	SDL_Quit();
 }
+
+void SDL_Rect_Set(SDL_Rect * sdl_rect, int x, int y, int w, int h)
+{
+	sdl_rect->x = x;
+	sdl_rect->y = y;
+	sdl_rect->w = w;
+	sdl_rect->h = h;
+};

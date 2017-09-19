@@ -36,6 +36,18 @@
     <ClCompile Include="events.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="animal_stats.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="commons.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="falling_minigame.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="poo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_management_functions.h">
@@ -66,6 +78,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animal_stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="falling_minigame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="poo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

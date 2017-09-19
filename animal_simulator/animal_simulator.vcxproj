@@ -123,19 +123,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animal_stats.c" />
     <ClCompile Include="buttons.c" />
     <ClCompile Include="bars.c" />
+    <ClCompile Include="commons.c" />
     <ClCompile Include="events.c" />
+    <ClCompile Include="falling_minigame.c" />
+    <ClCompile Include="poo.c" />
     <ClCompile Include="SDL_management_functions.c" />
     <ClCompile Include="Source.c" />
     <ClCompile Include="static_windows.c" />
     <ClCompile Include="textures.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animal_stats.h" />
     <ClInclude Include="buttons.h" />
     <ClInclude Include="bars.h" />
     <ClInclude Include="commons.h" />
     <ClInclude Include="events.h" />
+    <ClInclude Include="falling_minigame.h" />
+    <ClInclude Include="poo.h" />
     <ClInclude Include="project_constants.h" />
     <ClInclude Include="project_global_variables.h" />
     <ClInclude Include="project_libraries.h" />
