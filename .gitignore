@@ -241,4 +241,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /graphics
-/animal_simulator/saves
+*.sav
+/sprawozdanie.odt
+/.~lock.sprawozdanie.odt#
