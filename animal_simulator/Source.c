@@ -95,7 +95,7 @@ int main(int argc, char* args[])
 		int moneyFromPoo = 0;
 
 		// INITIALIZE GAME TIMERS
-		Uint32 startTime = 0;
+		Uint32 decreaseTime = 0;
 		Uint32 lastPooTime = 0;
 
 		// SET CURRENTLY ACTIVE WINDOW AND CHECK IF GAME CAN START
@@ -186,6 +186,12 @@ int main(int argc, char* args[])
 			if (SDL_GetTicks() - lastPooTime > DEFAULT_POO_TIME) {
 				add_poo(&pooHead, &pooTail, pooTextures);
 				lastPooTime = SDL_GetTicks();
+			}
+
+			//Decreasing bars value every x seconds
+			if (SDL_GetTicks() - decreaseTime > DEFAULT_DECREASE_TIME) {
+				update_bars_value(&animal, DEFAULT_BARS_DECREASE_CHANGE);
+				decreaseTime = SDL_GetTicks();
 			}
 
 			//Clearing the screen

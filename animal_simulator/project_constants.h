@@ -20,6 +20,8 @@
 #define EMPTY_OBJECT 0 // setting first value to 0 (EMPTY_OBJECT) automatically sets values of other fields of structre to 0 or NULL (but not undefined anymore)
 #define DEFAULT_LVL_UP_BAR_MAXVALUE_UPGRADE 20
 #define LVL_UP_TEXT_TEMPLATE "You have just level-uped. Good job! Your max possible %s is rising!"
+#define DEFAULT_DECREASE_TIME 4000 // in ms
+#define DEFAULT_BARS_DECREASE_CHANGE -5, -5, -2, -2
 /*MAIN WINDOW*/
 /*M*/#define MAIN_WINDOW_WIDTH 960
 /*M*/#define MAIN_WINDOW_HEIGHT 540
